@@ -1,0 +1,142 @@
+{
+  "projectVersion": 1,
+  "files": [
+    "BrR2D2.apk"
+  ],
+  "treeExpansions": [
+    [
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "Bluetooth",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "com.bullb.r2d2_nanopisystem.Bluetooth.BluetoothService",
+      "Bluetooth",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "WebSocket",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "WIFI",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "com.bullb.r2d2_nanopisystem.WIFI.WifiService",
+      "WIFI",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "com.bullb.r2d2_nanopisystem.WIFI.WifiService",
+      "WIFI",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "com.bullb.r2d2_nanopisystem.Bluetooth.BluetoothService",
+      "Bluetooth",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "UDP",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ],
+    [
+      "SerialPort",
+      "bullb.r2d2_nanopisystem",
+      "com",
+      "Source code",
+      "BrR2D2.apk"
+    ]
+  ],
+  "codeData": {
+    "comments": [],
+    "renames": []
+  },
+  "openTabs": [
+    {
+      "type": "class",
+      "tabPath": "com.bullb.r2d2_nanopisystem.Bluetooth.BluetoothService",
+      "subPath": "java",
+      "caret": 790,
+      "view": {
+        "x": 0,
+        "y": 2205
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false
+    },
+    {
+      "type": "class",
+      "tabPath": "com.bullb.r2d2_nanopisystem.WIFI.WifiService",
+      "subPath": "java",
+      "caret": 1533,
+      "view": {
+        "x": 0,
+        "y": 7879
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false
+    },
+    {
+      "type": "class",
+      "tabPath": "com.bullb.r2d2_nanopisystem.QRCodeReader",
+      "subPath": "java",
+      "caret": 960,
+      "view": {
+        "x": 0,
+        "y": 0
+      },
+      "active": false,
+      "pinned": false,
+      "bookmarked": false,
+      "hidden": false
+    }
+  ],
+  "cacheDir": "/home/lorek/.cache/jadx/projects/BrR2D2-02422fcdab5d933b9e58f5f3e311b6bb",
+  "enableLiveReload": false,
+  "searchHistory": [],
+  "pluginOptions": {}
+}

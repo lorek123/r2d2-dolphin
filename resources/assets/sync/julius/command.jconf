@@ -1,0 +1,18 @@
+-dfa grammar/cr2d2.dfa
+-v grammar/cr2d2.dict
+
+-sscalc
+-sscalclen 400
+-1pass
+
+-b 1500
+
+-quiet
+
+-fvad 3
+
+-rejectshort 800
+-lmp 10 0
+-input mic
+-h model/phone_m/jnas-tri-3k16-gid.binhmm
+-hlist model/phone_m/logicalTri-3k16-gid.bin
