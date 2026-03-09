@@ -34,6 +34,14 @@ apt-get install -y --no-install-recommends \
     avahi-daemon \
     build-essential
 
+# Bluetooth (for Improv WiFi BLE provisioning)
+apt-get install -y --no-install-recommends \
+    bluez \
+    bluetooth \
+    python3-dbus \
+    libdbus-1-dev \
+    libglib2.0-dev
+
 # OpenCV — prefer system package (avoids heavy pip compile on ARM)
 apt-get install -y --no-install-recommends \
     libopencv-dev python3-opencv \
@@ -57,7 +65,7 @@ echo "[r2d2] System packages installed."
 # ---------------------------------------------------------------------------
 echo "[r2d2] Creating system user: $R2D2_USER"
 if ! id "$R2D2_USER" &>/dev/null; then
-    useradd -r -s /usr/sbin/nologin -G dialout,video,audio "$R2D2_USER"
+    useradd -r -s /usr/sbin/nologin -G dialout,video,audio,bluetooth "$R2D2_USER"
 fi
 
 # ---------------------------------------------------------------------------
@@ -77,6 +85,9 @@ else
     echo "[r2d2] No system OpenCV — installing opencv-python-headless via pip"
     "$VENV/bin/pip" install -q -r "$R2D2_DIR/python/requirements.txt"
 fi
+
+# BLE provisioning (Improv WiFi)
+"$VENV/bin/pip" install -q bless
 
 # Activate venv's OpenCV can see system libopencv if needed
 echo "$R2D2_DIR/venv/lib/python3.*/site-packages" | xargs -I{} sh -c \
@@ -106,6 +117,7 @@ sed -i 's/127\.0\.1\.1.*/127.0.1.1\tr2d2/' /etc/hosts 2>/dev/null \
 echo "[r2d2] Enabling systemd services..."
 systemctl enable r2d2-portal.service
 systemctl enable avahi-daemon.service
+systemctl enable bluetooth.service
 # r2d2.service is NOT enabled here — started by wifi_manager.py at runtime
 
 # ---------------------------------------------------------------------------
