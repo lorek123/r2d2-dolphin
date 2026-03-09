@@ -181,10 +181,10 @@ jobs:
           [[ -z "$IMG" ]] && { echo "No image found"; ls .armbian-build/output/images/; exit 1; }
 
           NAME="r2d2-${{ steps.params.outputs.version }}-${{ steps.params.outputs.board }}.img.xz"
-          mv "$IMG" "$NAME"
+          sudo mv "$IMG" "$NAME"
 
           SHA=$(find .armbian-build/output/images -name "*.sha" | head -1)
-          [[ -n "$SHA" ]] && mv "$SHA" "${NAME%.xz}.sha" || sha256sum "$NAME" > "${NAME%.xz}.sha"
+          [[ -n "$SHA" ]] && sudo mv "$SHA" "${NAME%.xz}.sha" || sha256sum "$NAME" > "${NAME%.xz}.sha"
 
           echo "name=$NAME"       >> "$GITHUB_OUTPUT"
           echo "sha=${NAME%.xz}.sha" >> "$GITHUB_OUTPUT"
