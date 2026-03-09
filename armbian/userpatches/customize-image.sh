@@ -35,7 +35,7 @@ apt-get install -y --no-install-recommends \
     python3 python3-pip python3-venv python3-dev \
     network-manager \
     dnsmasq-base \
-    git curl rsync \
+    curl rsync \
     avahi-daemon
 
 # Bluetooth (for Improv WiFi BLE provisioning)
@@ -61,9 +61,11 @@ echo "[r2d2] System packages installed."
 # ---------------------------------------------------------------------------
 # 2. Clone R2D2 code from GitHub
 # ---------------------------------------------------------------------------
-echo "[r2d2] Cloning r2d2-dolphin repo to $R2D2_DIR..."
+echo "[r2d2] Downloading r2d2-dolphin to $R2D2_DIR..."
 rm -rf "$R2D2_DIR"
-GIT_TERMINAL_PROMPT=0 git clone --depth=1 "$R2D2_REPO" "$R2D2_DIR"
+mkdir -p "$R2D2_DIR"
+curl -fsSL "https://github.com/lorek123/r2d2-dolphin/archive/refs/heads/main.tar.gz" \
+    | tar -xz --strip-components=1 -C "$R2D2_DIR"
 echo "[r2d2] Clone complete."
 
 # Install systemd service files from repo
