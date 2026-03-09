@@ -142,38 +142,15 @@ jobs:
         run: |
           OVERLAY=".armbian-build/userpatches/overlay"
 
-          # Copy userpatches (customize-image.sh + static overlay files)
+          # Copy userpatches (customize-image.sh + static small overlay files)
+          # Note: Python code + armbian scripts are cloned by customize-image.sh
+          # directly from GitHub inside the ARM64 chroot (internet is available).
           cp -r armbian/userpatches/. .armbian-build/userpatches/
           chmod +x .armbian-build/userpatches/customize-image.sh
 
-          # Copy only what is actually needed on the device.
-          # Do NOT rsync the entire repo root — sources/ and resources/res/
-          # are huge and are not needed at runtime.
-          mkdir -p "$OVERLAY/opt/r2d2/python"
-          mkdir -p "$OVERLAY/opt/r2d2/armbian"
-          mkdir -p "$OVERLAY/opt/r2d2/resources/assets"
-
-          rsync -a --exclude='__pycache__' --exclude='*.pyc' \
-            python/ "$OVERLAY/opt/r2d2/python/"
-
-          rsync -a --exclude='__pycache__' --exclude='*.pyc' \
-            armbian/ "$OVERLAY/opt/r2d2/armbian/"
-
-          # Sound files are referenced by config.env (R2D2_SOUNDS_DIR)
-          if [[ -d resources/assets ]]; then
-            rsync -a resources/assets/ "$OVERLAY/opt/r2d2/resources/assets/"
-          fi
-
-          # Systemd services
-          mkdir -p "$OVERLAY/etc/systemd/system"
-          cp armbian/systemd/r2d2.service        "$OVERLAY/etc/systemd/system/"
-          cp armbian/systemd/r2d2-portal.service "$OVERLAY/etc/systemd/system/"
-
-          # Verify critical files made it into the overlay
-          echo "--- Overlay verification ---"
-          ls "$OVERLAY/opt/r2d2/python/"
-          test -f "$OVERLAY/opt/r2d2/python/requirements.txt" \
-            || { echo "ERROR: requirements.txt missing from overlay"; exit 1; }
+          # Small overlay: only static config files that must pre-exist on rootfs
+          echo "--- Overlay contents ---"
+          find "$OVERLAY" -type f | sort || echo "(overlay is empty — code is cloned at build time)"
 
       # ----------------------------------------------------------------
       # 7. Build image
