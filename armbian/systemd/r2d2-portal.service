@@ -1,0 +1,18 @@
+[Unit]
+Description=R2D2 WiFi Manager and Captive Portal
+Documentation=https://github.com/your/r2d2
+After=NetworkManager.service
+Wants=NetworkManager.service
+
+[Service]
+Type=simple
+# Runs as root — needs nmcli for hotspot management and systemctl for r2d2.service
+ExecStart=/opt/r2d2/venv/bin/python3 /opt/r2d2/armbian/wifi_manager.py
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=r2d2-portal
+
+[Install]
+WantedBy=multi-user.target

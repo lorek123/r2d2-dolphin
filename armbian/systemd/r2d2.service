@@ -1,0 +1,26 @@
+[Unit]
+Description=R2D2 Robot Server
+Documentation=https://github.com/your/r2d2
+# Started and stopped by wifi_manager.py (r2d2-portal.service).
+# Do NOT set WantedBy= — let the portal manager control the lifecycle.
+# If you want the server to start independently (e.g. wired/USB-network),
+# run: sudo systemctl enable r2d2.service
+
+[Service]
+Type=simple
+User=r2d2
+Group=r2d2
+WorkingDirectory=/opt/r2d2/python
+
+# Optional overrides: serial port, camera, ports, etc.
+EnvironmentFile=-/etc/r2d2/config.env
+
+ExecStart=/opt/r2d2/venv/bin/python3 -m server.main
+
+Restart=on-failure
+RestartSec=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=r2d2
+
+SupplementaryGroups=dialout video audio

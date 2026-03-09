@@ -1,0 +1,2 @@
+# R2D2 camera
+KERNEL=="video[0-9]*", MODE="0664", GROUP="video"

@@ -1,22 +1,41 @@
-# APK files
+# -----------------------------------------------------------------------
+# Original APK / jadx artifacts
+# (sources/ and resources/ are kept — useful reference)
+# -----------------------------------------------------------------------
 *.apk
+# jadx project file — regenerate with: jadx --export-gradle BrR2D2.apk
+BrR2D2.apk.jadx
+# jadx-exported gradle project + all build caches
+jadx_gradle/
+new_jadx/
 
+# -----------------------------------------------------------------------
+# Armbian image builder
+# -----------------------------------------------------------------------
+.armbian-build/
+*.img
+*.img.xz
+*.img.sha
+
+# -----------------------------------------------------------------------
 # Python
+# -----------------------------------------------------------------------
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Virtual Environment
+.mypy_cache/
+.ruff_cache/
 venv/
 env/
 ENV/
+.venv/
 
-# IDE
+# -----------------------------------------------------------------------
+# IDE / OS
+# -----------------------------------------------------------------------
 .idea/
 .vscode/
 *.swp
 *.swo
-
-# OS
 .DS_Store
-Thumbs.db 
+Thumbs.db
