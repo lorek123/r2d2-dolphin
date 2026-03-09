@@ -63,7 +63,7 @@ echo "[r2d2] System packages installed."
 # ---------------------------------------------------------------------------
 echo "[r2d2] Cloning r2d2-dolphin repo to $R2D2_DIR..."
 rm -rf "$R2D2_DIR"
-git clone --depth=1 "$R2D2_REPO" "$R2D2_DIR"
+GIT_TERMINAL_PROMPT=0 git clone --depth=1 "$R2D2_REPO" "$R2D2_DIR"
 echo "[r2d2] Clone complete."
 
 # Install systemd service files from repo
