@@ -33,6 +33,8 @@ concurrency:
 jobs:
   build:
     name: Build R2D2 Armbian image
+    permissions:
+      contents: write
     # ------------------------------------------------------------------
     # Free GitHub runners: ubuntu-22.04 (2 vCPU, 7 GB RAM, ~14 GB disk)
     # The "Free disk space" step recovers ~20 GB — enough for Armbian.
